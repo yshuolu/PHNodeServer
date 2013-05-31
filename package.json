@@ -1,0 +1,10 @@
+{
+	"name": "PHNodeServer",
+	"version": "1.0",
+	"scripts": {
+		"start": "node ./server/app.js"
+	},
+	"dependencies": {
+		"mime": ""
+	}
+}
