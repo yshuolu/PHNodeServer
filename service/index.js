@@ -1,7 +1,8 @@
-var SERVER_WIDGET_PATH = '../lib/server/'
+var SERVER_WIDGET_PATH = './lib/server/'
+var requireRootPath = '../'
 //Inheritance
 function Index(){}
-var BaseService = require(SERVER_WIDGET_PATH + 'baseService')
+var BaseService = require(requireRootPath + SERVER_WIDGET_PATH + 'baseService')
 Index.prototype = new BaseService()
 Index.prototype.constructor = Index
 
@@ -9,15 +10,16 @@ Index.prototype.constructor = Index
 Index.prototype.get = get
 
 //@implement
-var PUBLIC_DIR = '../../public/'
+var PUBLIC_DIR = './public/'
 var fs = require('fs')
-var util500 = require(SERVER_WIDGET_PATH + '500')
+var util500 = require(requireRootPath + SERVER_WIDGET_PATH + '500')
 
 function get(request, response){
 	
 	var htmlPagePath = PUBLIC_DIR + 'index.html'
 
 	fs.exists(htmlPagePath, function(exists){
+		console.log('Get out')
 		if (exists === true){
 			//just output index.html
 			response.writeHead(200, {'Content-Type': 'text/html'})
@@ -34,4 +36,4 @@ function get(request, response){
 
 }
 
-module.exports = Index
+module.exports = new Index()
